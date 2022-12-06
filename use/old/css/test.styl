@@ -1,0 +1,66 @@
+body
+  background: #000
+
+// Methods
+vendor(prop, args)
+  -webkit-{prop} args
+  -moz-{prop} args
+  {prop} args
+
+bg-vendor(args)
+  background: -webkit-gradient(args)
+  background: -moz-gradient(args)
+  background: gradient(args)
+
+// Some Aesthetic Styling
+.shimmer
+  font-family: "Lato"
+  font-weight: 300
+  font-size: 3em
+  margin: 0 auto
+  padding: 0 140px 0 0 //Necessary for iteration delay :(
+  display: inline
+  margin-bottom: 0
+
+p
+  font-family: "Lato"
+  font-weight: 300
+  font-size: 1em
+  color: rgba(255,255,255,0.65)
+  width: 500px
+  text-align: justify
+  line-height: 1.5em
+  border-top: 1px dashed rgba(255,255,255,0.2)
+  margin: 10px 0 0 5px
+  padding-top: 10px
+
+  a
+   text-decoration: none
+   color: #fff
+
+   &:visted
+     color: #fff
+
+// Shimmer Magic
+.shimmer
+  text-align: center
+  color: rgba(255, 255, 255, 0.1)
+
+  gradientOptions= linear, left top, right top, from(#222), to(#222), color-stop(0.5, #fff)
+
+  bg-vendor(gradientOptions)
+  vendor(background-size, 125px 100%)
+  vendor(background-clip, text)
+  vendor(animation-name, shimmer)
+  vendor(animation-duration, 2s)
+  vendor(animation-iteration-count, infinite)
+  background-repeat: no-repeat
+  background-position: 0 0
+  background-color: #222
+
+@keyframes shimmer
+  0%
+    background-position: top left
+
+  100%
+    background-position: top right
